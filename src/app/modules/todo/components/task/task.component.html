@@ -1,0 +1,74 @@
+<div class="grid grid-cols-1flex justify-center mb-8">
+    <label class="block w-96">
+        <span>
+          Task
+        </span>
+        <input 
+            type="email" 
+            name="email" 
+            class="
+                    mt-1 px-3 py-2 
+                    bg-white 
+                    border 
+                    shadow-sm 
+                    border-slate-300 
+                    placeholder-slate-400 
+                    focus:outline-none 
+                    focus:border-sky-500 
+                    focus:ring-sky-500 
+                    block 
+                    w-full 
+                    rounded-md 
+                    sm:text-sm 
+                    focus:ring-1" 
+            placeholder="Task" 
+            [(ngModel)]="task"
+            (keyup.enter)="addTaskToDo()"
+        />
+    </label>
+</div>
+
+<div class="example-container">
+    <h2>To do</h2>
+
+    <div 
+        cdkDropList 
+        id="list-todo" 
+        [cdkDropListData]="todo" 
+        [cdkDropListConnectedTo]="['list-progress']"
+        class="example-list" 
+        (cdkDropListDropped)="drop($event)"
+    >
+        <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+    </div>
+</div>
+
+<div class="example-container">
+    <h2>In Progress</h2>
+
+    <div 
+        cdkDropList 
+        id="list-progress" 
+        [cdkDropListData]="progress" 
+        [cdkDropListConnectedTo]="['list-todo', 'list-done']"
+        class="example-list" 
+        (cdkDropListDropped)="drop($event)"
+    >
+        <div class="example-box" *ngFor="let item of progress" cdkDrag>{{item}}</div>
+    </div>
+</div>
+
+<div class="example-container">
+    <h2>Done</h2>
+
+    <div 
+        cdkDropList 
+        id="list-done" 
+        [cdkDropListData]="done" 
+        [cdkDropListConnectedTo]="['list-progress']" 
+        class="example-list" 
+        (cdkDropListDropped)="drop($event)"
+    >
+        <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+    </div>
+</div>
