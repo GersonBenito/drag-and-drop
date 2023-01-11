@@ -5,7 +5,7 @@
 ![4](/src/assets/images/4.png)
 ![5](/src/assets/images/5.png)
 ![6](/src/assets/images/6.png)
-# DragAndDrop
+# Drag and Drop
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.2.
 

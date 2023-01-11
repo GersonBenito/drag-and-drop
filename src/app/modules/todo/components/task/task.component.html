@@ -1,36 +1,14 @@
-<div class="grid grid-cols-1flex justify-center mb-8">
-    <label class="block w-96">
-        <span>
-          Task
-        </span>
-        <input 
-            type="email" 
-            name="email" 
-            class="
-                    mt-1 px-3 py-2 
-                    bg-white 
-                    border 
-                    shadow-sm 
-                    border-slate-300 
-                    placeholder-slate-400 
-                    focus:outline-none 
-                    focus:border-sky-500 
-                    focus:ring-sky-500 
-                    block 
-                    w-full 
-                    rounded-md 
-                    sm:text-sm 
-                    focus:ring-1" 
-            placeholder="Task" 
-            [(ngModel)]="task"
-            (keyup.enter)="addTaskToDo()"
-        />
-    </label>
+<div class="conatiner-field">
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Task</mat-label>
+        <input matInput type="text" placeholder="task" [(ngModel)]="task" (keyup.enter)="addTaskToDo()">
+    </mat-form-field >
 </div>
 
 <div class="example-container">
-    <h2>To do</h2>
-
+    <div class="task_header">
+        <p>To do</p>
+    </div>
     <div 
         cdkDropList 
         id="list-todo" 
@@ -44,8 +22,9 @@
 </div>
 
 <div class="example-container">
-    <h2>In Progress</h2>
-
+    <div class="task_header">
+        <p>In Progress</p>
+    </div>
     <div 
         cdkDropList 
         id="list-progress" 
@@ -59,8 +38,9 @@
 </div>
 
 <div class="example-container">
-    <h2>Done</h2>
-
+    <div class="task_header">
+        <p>Done</p>
+    </div>
     <div 
         cdkDropList 
         id="list-done" 
