@@ -1,0 +1,19 @@
+.form-field{
+    width: 100%;
+}
+
+.container-actions{
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+.edit-form input.mat-input-element{
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.edit-form textarea.mat-input-element{
+    font-size: 18px;
+    font-weight: 500;
+}

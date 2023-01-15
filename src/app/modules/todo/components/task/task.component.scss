@@ -34,6 +34,7 @@
     border: 1px solid #F0F0F0;
     border-radius: 5px;
     box-shadow: 0px 4px 10px 0px #0000000D;
+    position: relative;
 }
 
 .cdk-drag-preview {
@@ -60,15 +61,6 @@
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.conatiner-field{
-    display: flex;
-    justify-content: center;
-}
-
-.form-field{
-    width: 50%;
-}
-
 .task_header{
     background: $status-blue;
     border-radius: 5px 5px 0px 0px;
@@ -82,4 +74,45 @@
     font-weight: 500;
     color: #ffff;
     text-align: center;
+}
+
+.new-task{
+    padding: 14px 8px;
+    cursor: pointer;
+}
+
+.new-task-list{
+    min-height: 0px;
+}
+
+.task-title_grad-and-drop{
+    font-size: 16px;
+    font-weight: 500;
+    color: $tags-black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-description_grad-and-drop{
+    font-size: 14px;
+    font-weight: 300;
+    color: $dark-sheet-bg;
+}
+
+.conainter-task-drag-and-drop{
+    width: 100%;
+}
+
+.date-task{
+    font-size: 12px;
+    font-weight: 400;
+    color: $status-grey;
+}
+
+.actions{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 8px;
+    cursor: pointer;
 }

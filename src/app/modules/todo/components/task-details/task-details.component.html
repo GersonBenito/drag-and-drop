@@ -1,0 +1,52 @@
+<ng-content *ngTemplateOutlet="action === 'new-task' ? new_task : edit_task; context: {task: task}"></ng-content>
+
+<!-- new task -->
+<ng-template #new_task let-task="task">
+    <div class="container-task">
+        <form [formGroup]="taskForm" (ngSubmit)="addTask()">
+            <div class="container-title-date">
+                <div class="title">
+                    <mat-form-field appearance="outline" class="form-field">
+                        <mat-label>Task</mat-label>
+                        <input matInput formControlName="title" placeholder="Task" type="text">
+                    </mat-form-field>
+                </div>
+                <!-- <div class="date">Enero 14, 2023</div> -->
+            </div>
+            <div class="description">
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput formControlName="description" rows="10" placeholder="Description"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="container-actions">
+                <button mat-raised-button type="button" (click)="closeDialog()">Cancel</button>
+                <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid">Save</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
+<!-- edit task -->
+<ng-template #edit_task let-task="task">
+    <div class="container-task">
+        <form [formGroup]="taskForm">
+            <div class="edit-title-task">
+                <mat-form-field class="form-field edit-form">
+                    <!-- <mat-label>Task</mat-label> -->
+                    <input matInput formControlName="title" type="text">
+                </mat-form-field>
+                <div class="date-task">{{task.date | date: 'MMMM d, y'}}</div>
+            </div>
+            <div class="edit-description-task">
+                <mat-form-field class="form-field edit-form">
+                    <textarea matInput formControlName="description"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="container-actions">
+                <mat-icon style="cursor: pointer;">delete</mat-icon>
+                <mat-icon style="cursor: pointer;">edit</mat-icon>
+            </div>
+        </form>
+    </div>
+</ng-template>

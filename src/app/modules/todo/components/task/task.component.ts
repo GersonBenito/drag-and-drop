@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { MatDialog } from '@angular/material/dialog';
+import { TaskDetailsComponent } from '../task-details/task-details.component';
+import { TaskService } from '@modules/todo/services/task.service';
+import { Task } from '@modules/todo/interfaces/task.interface';
 
 @Component({
   selector: 'app-task',
@@ -8,17 +12,21 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class TaskComponent implements OnInit {
 
-  public todo: Array<string> = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-  public progress: Array<string> = [];
-  public done: Array<string> = [];
+  public todo: Array<Task> = [];
+  public progress: Array<Task> = [];
+  public done: Array<Task> = [];
   public task: string = '';
 
-  constructor() { }
+  constructor( 
+    private dialog: MatDialog, 
+    public _taskService: TaskService,
+  ) { }
 
   ngOnInit(): void {
+    this.getAllTask();
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -31,13 +39,25 @@ export class TaskComponent implements OnInit {
     }
   }
 
-  addTaskToDo(){
-    if(this.task.trim() === ''){
-      return;
-    }
-    
-    this.todo = [this.task, ...this.todo];
-    this.task = '';
+  openDialog(action: string, task?: Task): void {
+    this.dialog.open(TaskDetailsComponent, {
+      data: {
+        action: action,
+        task
+      },
+      width: '50%',
+    });
+  }
+
+  getAllTask(): void{
+    this._taskService.$todo.subscribe({
+      next: (result) =>{
+        this.todo = result;
+      },
+      error: (error) =>{
+        console.log('error -->', error);
+      }
+    });
   }
 
 }
