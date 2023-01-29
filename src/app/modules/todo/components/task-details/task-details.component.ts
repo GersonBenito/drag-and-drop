@@ -39,7 +39,8 @@ export class TaskDetailsComponent implements OnInit {
   ngOnInit(): void {}
 
   getDataTask(): void{
-    console.log('data dialog -->', this.data);
+    console.log(this.data);
+    
     const { action, task } = this.data;
     this.task = task;
     this.action = action

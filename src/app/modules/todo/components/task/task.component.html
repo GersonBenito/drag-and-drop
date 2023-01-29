@@ -18,7 +18,7 @@
                 </div>
                 <div class="task-description_grad-and-drop">{{task.description}}</div>
             </div>
-            <mat-icon class="actions" (click)="openDialog('edit', task)">aspect_ratio</mat-icon>
+            <mat-icon class="actions" (click)="openDialog('edit', task, 'todo')">aspect_ratio</mat-icon>
         </div>
     </div>
     <div class="example-list new-task-list" (click)="openDialog('new-task')">
@@ -48,7 +48,7 @@
                 </div>
                 <div class="task-description_grad-and-drop">{{task.description}}</div>
             </div>
-            <mat-icon class="actions" (click)="openDialog('edit', task)">aspect_ratio</mat-icon>
+            <mat-icon class="actions" (click)="openDialog('edit', task, 'progress')">aspect_ratio</mat-icon>
         </div>
     </div>
 </div>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="task-description_grad-and-drop">{{task.description}}</div>
             </div>
-            <mat-icon class="actions" (click)="openDialog('edit', task)">aspect_ratio</mat-icon>
+            <mat-icon class="actions" (click)="openDialog('edit', task, 'done')">aspect_ratio</mat-icon>
         </div>
     </div>
 </div>

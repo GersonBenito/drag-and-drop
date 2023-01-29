@@ -39,10 +39,11 @@ export class TaskComponent implements OnInit {
     }
   }
 
-  openDialog(action: string, task?: Task): void {
+  openDialog(action: string, task?: Task, task_info?: string): void {
     this.dialog.open(TaskDetailsComponent, {
       data: {
         action: action,
+        task_info,
         task
       },
       width: '50%',
